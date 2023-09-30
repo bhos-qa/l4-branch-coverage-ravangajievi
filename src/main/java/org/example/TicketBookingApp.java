@@ -1,5 +1,7 @@
 package org.example;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,14 @@ public class TicketBookingApp {
         for (String ticket : availableTickets) {
             System.out.println(ticket);
         }
+        File tempDir;
+        try {
+            tempDir = File.createTempFile("log_book_borrow", null);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        tempDir.delete();
+        tempDir.mkdir();
     }
 
     // Method to display booked tickets
